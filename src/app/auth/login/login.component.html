@@ -1,0 +1,23 @@
+<div class="auth-container">
+  <h2>Login</h2>
+
+  <form (ngSubmit)="onSubmit()">
+
+    <div>
+      <label>Password</label>
+      <input type="password" [(ngModel)]="password" name="password" required />
+    </div>
+
+    <div>
+      <label>Role</label>
+      <select [(ngModel)]="selectedRoles" name="roles" id="">
+        <option value="">Select Roles</option>
+        <option *ngFor="let role of roles" [value]="role">
+          {{ role }}
+        </option>
+      </select>
+    </div>
+
+    <button type="submit">Sign In</button>
+  </form>
+</div>
