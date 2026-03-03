@@ -1,23 +1,75 @@
-<div class="auth-container">
-  <h2>Login</h2>
+<div class="min-h-screen flex items-center justify-center bg-slate-950 px-6 py-12">
 
-  <form (ngSubmit)="onSubmit()">
-
-    <div>
-      <label>Password</label>
-      <input type="password" [(ngModel)]="password" name="password" required />
+  <div class="w-full max-w-md">
+    
+    <!-- Logo / Title -->
+    <div class="text-center mb-8">
+      <h2 class="text-3xl font-bold text-white tracking-tight">
+        Sign in to your account
+      </h2>
+      <p class="mt-2 text-sm text-slate-400">
+        Welcome back. Please enter your details.
+      </p>
     </div>
 
-    <div>
-      <label>Role</label>
-      <select [(ngModel)]="selectedRoles" name="roles" id="">
-        <option value="">Select Roles</option>
-        <option *ngFor="let role of roles" [value]="role">
-          {{ role }}
-        </option>
-      </select>
-    </div>
+    <!-- Card -->
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl p-8 transition-all duration-300 hover:shadow-indigo-500/10">
 
-    <button type="submit">Sign In</button>
-  </form>
+      <form (ngSubmit)="onSubmit()" class="space-y-6">
+
+       
+
+        <!-- Password -->
+        <div>
+          <label class="block text-sm font-medium text-slate-300 mb-2">
+            Password
+          </label>
+          <input
+            type="password"
+            [(ngModel)]="password"
+            name="password"
+            required
+            class="w-full rounded-lg bg-slate-800 border border-slate-700 text-white px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition"
+            placeholder="••••••••"
+          />
+        </div>
+
+        <!-- Role Dropdown -->
+        <div>
+          <label class="block text-sm font-medium text-slate-300 mb-2">
+            Role
+          </label>
+          <select
+            [(ngModel)]="selectedRoles"
+            name="role"
+            required
+            class="w-full rounded-lg bg-slate-800 border border-slate-700 text-white px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition"
+          >
+            <option value="" disabled selected>Select role</option>
+            <option *ngFor="let role of roles" [value]="role">
+              {{ role }}
+            </option>
+          </select>
+        </div>
+
+        <!-- Button -->
+        <button
+          type="submit"
+          class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3 rounded-lg transition-all duration-200 shadow-lg shadow-indigo-600/20 hover:shadow-indigo-600/40"
+        >
+          Sign in
+        </button>
+
+      </form>
+
+      <!-- Divider -->
+      <div class="mt-6 text-center text-sm text-slate-400">
+        Don't have an account?
+        <a routerLink="/register" class="text-indigo-400 hover:text-indigo-300 font-medium">
+          Sign up
+        </a>
+      </div>
+
+    </div>
+  </div>
 </div>
