@@ -1,197 +1,242 @@
+<main
+  class="relative min-h-dvh overflow-hidden p-4 text-[#ebf3ff] font-[Space_Grotesk,Segoe_UI,sans-serif]
+  bg-[radial-gradient(circle_at_10%_15%,rgba(50,229,203,0.18),transparent_35%),radial-gradient(circle_at_88%_24%,rgba(255,207,106,0.16),transparent_37%),radial-gradient(circle_at_80%_85%,rgba(255,136,102,0.22),transparent_34%),linear-gradient(140deg,#0d1c3d_0%,#1e2f6f_42%,#2a1f57_100%)]"
+>
 
-  <!-- Masthead -->
-  <header class="masthead pt-5">
-    <div class="container px-5 pt-5">
-      <div class="row gx-5 align-items-center">
+<!-- FLOATING ORBS -->
 
-        <!-- Text -->
-        <div class="col-lg-6">
-          <div class="mb-5 mb-lg-0 text-center text-lg-start">
-            <h1 class="display-1 lh-1 mb-3">
-              An application that makes student management easier than ever!
-            </h1>
+<div class="absolute w-[220px] h-[220px] left-[-80px] top-[90px] bg-[#32e5cb] rounded-full blur-xl opacity-50"></div>
 
-            <p class="lead fw-normal text-muted mb-5">
-              Launch your mobile app landing page faster with this free, open source theme from Start Bootstrap!
-            </p>
+<div class="absolute w-[260px] h-[260px] right-[-90px] top-[-100px] bg-[#ff8866] rounded-full blur-xl opacity-50"></div>
 
-            <div class="d-flex flex-column flex-lg-row align-items-center justify-content-center justify-content-lg-start">
-              <a class="me-lg-3 mb-4 mb-lg-0" href="#">
-                <img
-                  class="app-badge"
-                  src="assets/template/img/google-play-badge.svg"
-                  alt="Google Play"
-                />
-              </a>
-              <a href="#">
-                <img
-                  class="app-badge"
-                  src="assets/template/img/app-store-badge.svg"
-                  alt="App Store"
-                />
-              </a>
-            </div>
-          </div>
-        </div>
+<div class="absolute w-[260px] h-[260px] right-[20%] bottom-[-120px] bg-[#ffcf6a] rounded-full blur-xl opacity-50"></div>
 
-        <!-- Device Mockup -->
-        <div class="col-lg-6">
-          <div class="masthead-device-mockup position-relative">
 
-            <svg class="circle" viewBox="0 0 100 100">
-              <defs>
-                <linearGradient id="circleGradient" gradientTransform="rotate(45)">
-                  <stop class="gradient-start-color" offset="0%"></stop>
-                  <stop class="gradient-end-color" offset="100%"></stop>
-                </linearGradient>
-              </defs>
-              <circle cx="50" cy="50" r="50"></circle>
-            </svg>
+<!-- HEADER -->
 
-            <div class="device-wrapper">
-              <div
-                class="device"
-                data-device="iPhoneX"
-                data-orientation="portrait"
-                data-color="black"
-              >
-                <div class="screen bg-black">
-                  <video
-                    muted
-                    autoplay
-                    loop
-                    playsinline
-                    style="max-width: 100%; height: 100%; object-fit: cover;"
-                  >
-                    <source src="assets/template/img/demo-screen.mp4" type="video/mp4" />
-                  </video>
-                </div>
-              </div>
-            </div>
+<header
+class="relative z-10 max-w-[1150px] mx-auto mb-5 p-4 rounded-xl border border-white/20 bg-white/10 backdrop-blur-lg grid gap-3 md:grid-cols-[auto_1fr_auto] items-center"
+>
 
-          </div>
-        </div>
+<div class="flex items-center gap-2">
 
-      </div>
-    </div>
-  </header>
+<div
+class="w-10 h-10 grid place-items-center rounded-lg font-bold text-[#1f2148]
+bg-gradient-to-br from-[#32e5cb] to-[#97fff1]"
+>
+SM
+</div>
 
-  <!-- Features -->
-  <section id="features" class="py-5">
-    <div class="container px-5">
-      <div class="row gx-5 align-items-center">
+<div>
+<p class="font-bold text-base">StudyMatrix</p>
+<p class="text-xs text-white/70">Smart Student Management Portal</p>
+</div>
 
-        <div class="col-lg-8 order-lg-1 mb-5 mb-lg-0">
-          <div class="container-fluid px-5">
+</div>
 
-            <div class="row gx-5">
 
-              <div class="col-md-6 mb-5">
-                <div class="text-center">
-                  <i class="bi-phone icon-feature text-gradient d-block mb-3"></i>
-                  <h3 class="font-alt">Device Mockups</h3>
-                  <p class="text-muted mb-0">
-                    Ready to use HTML/CSS device mockups, no Photoshop required!
-                  </p>
-                </div>
-              </div>
+<nav class="flex gap-3 flex-wrap text-sm">
 
-              <div class="col-md-6 mb-5">
-                <div class="text-center">
-                  <i class="bi-camera icon-feature text-gradient d-block mb-3"></i>
-                  <h3 class="font-alt">Flexible Use</h3>
-                  <p class="text-muted mb-0">
-                    Put an image, video, animation, or anything else in the screen!
-                  </p>
-                </div>
-              </div>
+ 
 
-            </div>
+</nav>
 
-          </div>
-        </div>
+<div class="flex gap-2">
+  <button
+    routerLink="/login"
+    class="px-4 py-2 rounded-lg border border-white/30 bg-white/5 font-semibold hover:-translate-y-[2px] transition">
+    Login
+  </button>
+</div>
 
-      </div>
-    </div>
-  </section>
+</header>
 
-  <!-- Info Section -->
-  <section class="bg-light py-5">
-    <div class="container px-5">
-      <div class="row gx-5 align-items-center justify-content-center justify-content-lg-between">
 
-        <div class="col-12 col-lg-5">
-          <h2 class="display-4 lh-1 mb-4">
-            Enter a new age of web design
-          </h2>
-          <p class="lead fw-normal text-muted mb-5 mb-lg-0">
-            This section is perfect for featuring some information about your application.
-          </p>
-        </div>
+<!-- HERO -->
 
-        <div class="col-sm-8 col-md-6 mt-4 mt-lg-0">
-          <div class="px-5 px-sm-0 text-center">
-            <img
-              class="img-fluid rounded-circle shadow"
-              src="assets/template/img/irvin-aloise-oz2QiBV-lKw-unsplash.jpg"
-              alt="Preview"
-            />
-          </div>
-        </div>
+<section class="relative z-10 max-w-[1150px] mx-auto grid gap-4 mb-6 md:grid-cols-[1.2fr_1fr] items-center">
 
-      </div>
-    </div>
-  </section>
+<div>
 
-  <!-- Footer -->
-  <footer class="bg-black text-center py-5">
-    <div class="container px-5">
-      <div class="text-white-50 small">
-        <div class="mb-2">&copy; Your Website 2023. All Rights Reserved.</div>
-        <a href="#">Privacy</a>
-        <span class="mx-1">&middot;</span>
-        <a href="#">Terms</a>
-        <span class="mx-1">&middot;</span>
-        <a href="#">FAQ</a>
-      </div>
-    </div>
-  </footer>
+<p
+class="inline-block text-xs uppercase tracking-widest font-bold text-[#16244c]
+rounded-full px-3 py-1 mb-3
+bg-gradient-to-br from-[#32e5cb] to-[#d2fff8]"
+>
+Everything your campus needs, in one portal
+</p>
 
-  <!-- Modal -->
-  <div class="modal fade" id="feedbackModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header bg-gradient-primary-to-secondary p-4">
-          <h5 class="modal-title font-alt text-white">Send feedback</h5>
-          <button class="btn-close btn-close-white" type="button" data-bs-dismiss="modal"></button>
-        </div>
+<h1 class="text-[clamp(1.95rem,4vw,3.5rem)] leading-tight max-w-[16ch] font-bold">
+Learn, upload, track, and manage from a single dashboard.
+</h1>
 
-        <div class="modal-body border-0 p-4">
-          <form>
-            <div class="form-floating mb-3">
-              <input class="form-control" type="text" placeholder="Enter your name..." />
-              <label>Full name</label>
-            </div>
+<p class="mt-4 mb-4 max-w-[56ch] leading-relaxed text-white/70">
+Students access study notes instantly, teachers upload organized resources,
+attendance stays live, and administrators control the full system with role-based access.
+</p>
 
-            <div class="form-floating mb-3">
-              <input class="form-control" type="email" placeholder="name@example.com" />
-              <label>Email address</label>
-            </div>
+<div class="flex gap-3 flex-wrap mb-4">
 
-            <div class="form-floating mb-3">
-              <textarea class="form-control" style="height: 10rem"></textarea>
-              <label>Message</label>
-            </div>
+<button
+class="px-4 py-2 rounded-lg font-semibold text-[#221f42]
+bg-gradient-to-br from-[#ffcf6a] to-[#ff8866] shadow-lg hover:-translate-y-[2px] transition"
+>
+Explore Portal
+</button>
 
-            <div class="d-grid">
-              <button class="btn btn-primary rounded-pill btn-lg">
-                Submit
-              </button>
-            </div>
-          </form>
-        </div>
+<button
+class="px-4 py-2 rounded-lg border border-white/30 bg-white/5 hover:-translate-y-[2px] transition"
+>
+Watch Demo
+</button>
 
-      </div>
-    </div>
-  </div>
+</div>
 
+
+<div class="flex flex-wrap gap-3 text-sm">
+
+<p class="bg-white/10 px-3 py-1 rounded-md">
+<span class="text-[#32e5cb] font-bold">24/7</span> Notes Availability
+</p>
+
+<p class="bg-white/10 px-3 py-1 rounded-md">
+<span class="text-[#32e5cb] font-bold">100%</span> Role-Based Access
+</p>
+
+<p class="bg-white/10 px-3 py-1 rounded-md">
+<span class="text-[#32e5cb] font-bold">Real-Time</span> Attendance Sync
+</p>
+
+</div>
+
+</div>
+
+
+<!-- HERO VISUAL -->
+
+<div
+class="relative rounded-xl border border-white/20 p-4 min-h-[300px] max-h-[360px]
+bg-gradient-to-br from-white/10 to-white/5 flex items-center justify-center"
+>
+
+<div class="absolute top-3 left-3 text-xs bg-[#122449]/90 border border-white/20 rounded-md px-2 py-1 max-w-[170px]">
+<p class="text-[#a0fff1] font-bold">Student View</p>
+<p>Latest: Physics Unit 4 Notes</p>
+</div>
+
+
+<svg class="w-full max-h-[320px] object-contain" viewBox="0 0 420 320">
+
+<defs>
+
+<linearGradient id="screenGlow">
+<stop offset="0%" stop-color="#2be4cb"/>
+<stop offset="100%" stop-color="#3f95ff"/>
+</linearGradient>
+
+<linearGradient id="lineGlow">
+<stop offset="0%" stop-color="#ffd66d"/>
+<stop offset="100%" stop-color="#ff865e"/>
+</linearGradient>
+
+</defs>
+
+<rect x="40" y="40" width="340" height="205" rx="20" fill="#10253d" stroke="#4adbc5" stroke-opacity="0.45"/>
+
+<rect x="58" y="62" width="110" height="58" rx="12" fill="#1a3350"/>
+
+<rect x="180" y="62" width="182" height="58" rx="12" fill="url(#screenGlow)"/>
+
+<rect x="58" y="132" width="304" height="16" rx="8" fill="#1e3d61"/>
+
+<rect x="58" y="156" width="234" height="10" rx="5" fill="url(#lineGlow)"/>
+
+<rect x="58" y="178" width="268" height="10" rx="5" fill="#2b537f"/>
+
+<rect x="58" y="200" width="198" height="10" rx="5" fill="#2b537f"/>
+
+<rect x="156" y="248" width="110" height="16" rx="8" fill="#22496f"/>
+
+</svg>
+
+
+<div class="absolute bottom-3 left-4 text-xs bg-[#122449]/90 border border-white/20 rounded-md px-2 py-1 max-w-[170px]">
+<p class="text-[#a0fff1] font-bold">Teacher Upload</p>
+<p>Algebra Worksheet uploaded</p>
+</div>
+
+
+<div class="absolute right-3 top-[42%] text-xs bg-[#122449]/90 border border-white/20 rounded-md px-2 py-1 max-w-[170px]">
+<p class="text-[#a0fff1] font-bold">Admin Alert</p>
+<p>Attendance below threshold in Grade 9-B</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CAPABILITIES -->
+
+<section class="relative z-10 max-w-[1150px] mx-auto grid gap-3 mb-6 md:grid-cols-2">
+
+<div class="p-4 rounded-xl border border-white/20 bg-white/10">
+<h2 class="font-semibold mb-1">Students Get Notes</h2>
+<p class="text-white/70 text-sm">Organized chapter-wise notes and revision material.</p>
+</div>
+
+<div class="p-4 rounded-xl border border-white/20 bg-white/10">
+<h2 class="font-semibold mb-1">Teachers Upload Content</h2>
+<p class="text-white/70 text-sm">Upload PDFs, docs, and links with filters.</p>
+</div>
+
+<div class="p-4 rounded-xl border border-white/20 bg-white/10">
+<h2 class="font-semibold mb-1">Attendance Management</h2>
+<p class="text-white/70 text-sm">Daily attendance tracking and alerts.</p>
+</div>
+
+<div class="p-4 rounded-xl border border-white/20 bg-white/10">
+<h2 class="font-semibold mb-1">Admin Full Control</h2>
+<p class="text-white/70 text-sm">Manage users and system settings securely.</p>
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer
+class="relative z-10 max-w-[1150px] mx-auto grid gap-4 p-4 rounded-xl border border-white/20 bg-[#081023]/80 md:grid-cols-2 xl:grid-cols-4"
+>
+
+<div>
+<h3 class="text-[#98fff0] font-semibold mb-2">StudyMatrix</h3>
+<p class="text-sm text-white/70">Student-first platform for academic collaboration.</p>
+</div>
+
+<div>
+<h3 class="text-[#98fff0] font-semibold mb-2">Quick Links</h3>
+<a class="block text-sm text-white/70">Portal Tour</a>
+<a class="block text-sm text-white/70">Help Center</a>
+<a class="block text-sm text-white/70">Privacy Policy</a>
+<a class="block text-sm text-white/70">Terms</a>
+</div>
+
+<div>
+<h3 class="text-[#98fff0] font-semibold mb-2">For Institutions</h3>
+<a class="block text-sm text-white/70">Teacher Onboarding</a>
+<a class="block text-sm text-white/70">Admin Dashboard Guide</a>
+<a class="block text-sm text-white/70">Attendance Workflow</a>
+<a class="block text-sm text-white/70">Data Security</a>
+</div>
+
+<div>
+<h3 class="text-[#98fff0] font-semibold mb-2">Contact</h3>
+<p class="text-sm text-white/70">support&#64;studymatrix.edu</p>
+<p class="text-sm text-white/70">+91 98765 43210</p>
+<p class="text-sm text-white/70">Mon - Sat, 9:00 AM to 6:00 PM</p>
+</div>
+
+</footer>
+
+</main>

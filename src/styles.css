@@ -6,10 +6,14 @@
 
 html, body {
   margin: 0;
-  padding: 80px;
   height: 100%;
+  width: auto;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   font-family: 'Inter', sans-serif;
 }
-
-
+img,
+svg {
+	max-width: 100%;
+	height: auto;
+	display: block;
+}

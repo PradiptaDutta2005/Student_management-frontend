@@ -4,6 +4,7 @@
 Teacher Dashboard
 </h1>
 
+<!-- Mark Attendance -->
 
 <div class="bg-white shadow rounded-xl p-6 mb-10">
 
@@ -11,24 +12,24 @@ Teacher Dashboard
 Mark Attendance
 </h2>
 
-<form class="grid grid-cols-2 gap-4">
+<form class="grid grid-cols-2 gap-4" (ngSubmit)="markAttendance()">
 
-<select class="border p-2 rounded">
-<option>Select Subject</option>
-<option>Mathematics</option>
-<option>Physics</option>
-<option>Computer Science</option>
+<select class="border p-2 rounded" [(ngModel)]="attendance.subjectId" name="subjectId">
+<option value="">Select Subject</option>
+<option *ngFor="let s of subjects" [value]="s.id">
+{{s.name}}
+</option>
 </select>
 
-<select class="border p-2 rounded">
-<option>Select Student</option>
-<option>Rahul</option>
-<option>Sneha</option>
-<option>Aman</option>
+<select class="border p-2 rounded" [(ngModel)]="attendance.studentId" name="studentId">
+<option value="">Select Student</option>
+<option *ngFor="let s of students" [value]="s.id">
+{{s.username}}
+</option>
 </select>
 
-<select class="border p-2 rounded">
-<option>Status</option>
+<select class="border p-2 rounded" [(ngModel)]="attendance.status" name="status">
+<option value="">Status</option>
 <option value="PRESENT">Present</option>
 <option value="ABSENT">Absent</option>
 </select>
@@ -42,19 +43,9 @@ Mark Attendance
 
 </form>
 
-<!-- Backend placeholder -->
-
-<!--
-POST /teacher/mark-attendance
-
-{
-  student: { id: 1 },
-  subject: { id: 2 },
-  status: "PRESENT"
-}
--->
-
 </div>
+
+<!-- Upload Notes -->
 
 <div class="bg-white shadow rounded-xl p-6 mb-10">
 
@@ -62,26 +53,29 @@ POST /teacher/mark-attendance
 Upload Study Notes
 </h2>
 
-<form class="space-y-4">
+<form class="space-y-4" (ngSubmit)="uploadNotes()">
 
 <input
 type="text"
 placeholder="Notes Title"
 class="w-full border p-2 rounded"
+[(ngModel)]="note.title"
+name="title"
 />
 
-<select class="w-full border p-2 rounded">
+<select class="w-full border p-2 rounded" [(ngModel)]="note.subjectId" name="subjectId">
 
-<option>Select Subject</option>
-<option>Mathematics</option>
-<option>Physics</option>
-<option>Computer Science</option>
+<option value="">Select Subject</option>
+<option *ngFor="let s of subjects" [value]="s.id">
+{{s.name}}
+</option>
 
 </select>
 
 <input
 type="file"
 class="w-full border p-2 rounded"
+(change)="onFileSelected($event)"
 />
 
 <button
@@ -93,18 +87,9 @@ Upload Notes
 
 </form>
 
-<!-- Backend placeholder -->
-
-<!--
-POST /teacher/upload-notes
-
-FormData:
-file: File
-subjectId: 1
-title: "Lecture 1 Notes"
--->
-
 </div>
+
+<!-- Uploaded Notes -->
 
 <div class="bg-white shadow rounded-xl p-6">
 
@@ -117,30 +102,29 @@ Uploaded Notes
 <thead class="bg-gray-200">
 
 <tr>
-<th class="p-3 text-left">ID</th>
-<th class="p-3 text-left">Title</th>
-<th class="p-3 text-left">Subject</th>
-<th class="p-3 text-left">Upload Date</th>
-<th class="p-3 text-left">File</th>
+<th class="p-3">ID</th>
+<th class="p-3">Title</th>
+<th class="p-3">Subject</th>
+<th class="p-3">Date</th>
+<th class="p-3">File</th>
 </tr>
 
 </thead>
 
 <tbody>
 
-<tr
-*ngFor="let note of notes"
-class="border-t hover:bg-gray-50">
+<tr *ngFor="let n of notes" class="border-t">
 
-<td class="p-3">{{note.id}}</td>
-<td class="p-3">{{note.title}}</td>
-<td class="p-3">{{note.subject}}</td>
-<td class="p-3">{{note.date}}</td>
+<td class="p-3">{{n.id}}</td>
+<td class="p-3">{{n.title}}</td>
+<td class="p-3">{{n.subject.name}}</td>
+<td class="p-3">{{n.uploadDate | date:'mediumDate'}}</td>
 
 <td class="p-3">
 
 <button
-class="text-blue-600 underline">
+class="text-blue-600 underline"
+(click)="download(n.storedFileName)">
 
 Download
 

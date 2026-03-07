@@ -1,77 +1,129 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
-interface User {
-  id: number;
-  username: string;
-  role: 'STUDENT' | 'TEACHER';
-  createdAt: Date;
-}
 
 @Component({
   selector: 'app-admindashboard',
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './admindashboard.component.html',
-  styleUrl: './admindashboard.component.css'
+  styleUrls: ['./admindashboard.component.css']
 })
-export class AdmindashboardComponent {
+export class AdmindashboardComponent implements OnInit {
 
-  searchText = '';
-  filterType = 'newest';
+  api = "http://localhost:8080/admin";
 
-  users: User[] = [
-    { id: 1, username: 'Rahul', role: 'STUDENT', createdAt: new Date('2026-01-20') },
-    { id: 2, username: 'Amit', role: 'TEACHER', createdAt: new Date('2026-02-12') },
-    { id: 3, username: 'Sneha', role: 'STUDENT', createdAt: new Date('2026-02-18') },
-    { id: 4, username: 'Priya', role: 'TEACHER', createdAt: new Date('2026-03-01') }
-  ];
+  student:any = {};
+  teacher:any = {};
+  subject:any = {};
+  assign:any = {};
 
-  pendingStudents = [
-    { username: 'Riya' },
-    { username: 'Kunal' }
-  ];
+  users:any[] = [];
+  filteredUsers:any[] = [];
+  teachers:any[] = [];
+  subjects:any[] = [];
 
-  pendingTeachers = [
-    { username: 'Dr Sharma' },
-    { username: 'Prof Sen' }
-  ];
+  searchText:string = "";
+  filterType:string = "newest";
 
-  get filteredUsers() {
+  constructor(private http:HttpClient){}
 
-    let filtered = this.users.filter(u =>
+  ngOnInit(){
+    this.loadUsers();
+    this.loadTeachers();
+    this.loadSubjects();
+  }
+
+  registerStudent(){
+    const body = {
+      username:this.student.username,
+      password:this.student.password,
+      email:this.student.email,
+      role:"STUDENT"
+    };
+
+    this.http.post(`${this.api}/create-user`,body)
+    .subscribe(()=>{
+      alert("Student Registered");
+      this.student = {};   // ✅ clear form
+      this.loadUsers();
+    });
+  }
+
+  registerTeacher(){
+    const body = {
+      username:this.teacher.username,
+      password:this.teacher.password,
+      email:this.teacher.email,
+      role:"TEACHER"
+    };
+
+    this.http.post(`${this.api}/create-user`,body)
+    .subscribe(()=>{
+      alert("Teacher Registered");
+      this.teacher = {};   // ✅ clear form
+      this.loadTeachers();
+      this.loadUsers();
+    });
+  }
+
+  createSubject(){
+    this.http.post(`${this.api}/create-subject`,this.subject)
+    .subscribe(()=>{
+      alert("Subject Created");
+      this.subject = {};  // ✅ clear form
+
+      this.loadSubjects();
+    });
+  }
+
+  assignTeacher(){
+
+    const body = {
+      subjectId:this.assign.subjectId,
+      teacherId:this.assign.teacherId
+    };
+
+    this.http.post(`${this.api}/assign-subject`,body)
+    .subscribe(()=>{
+      alert("Teacher Assigned");
+      this.assign = {};  // ✅ clear dropdown
+    });
+  }
+
+  loadUsers(){
+    this.http.get<any[]>(`${this.api}/all-users`)
+    .subscribe(res=>{
+      this.users = res;
+      this.filteredUsers = res;
+    });
+  }
+
+  loadTeachers(){
+    this.http.get<any[]>(`${this.api}/teachers`)
+    .subscribe(res=>{
+      this.teachers = res;
+    });
+  }
+
+  loadSubjects(){
+    this.http.get<any[]>(`${this.api}/subjects`)
+    .subscribe(res=>{
+      this.subjects = res;
+    });
+  }
+
+  searchUsers(){
+    this.filteredUsers = this.users.filter(u =>
       u.username.toLowerCase().includes(this.searchText.toLowerCase())
     );
-
-    if (this.filterType === 'newest') {
-      filtered = filtered.sort((a,b)=> b.createdAt.getTime()-a.createdAt.getTime());
-    }
-
-    if (this.filterType === 'oldest') {
-      filtered = filtered.sort((a,b)=> a.createdAt.getTime()-b.createdAt.getTime());
-    }
-
-    if (this.filterType === '2months') {
-      const twoMonthsAgo = new Date();
-      twoMonthsAgo.setMonth(twoMonthsAgo.getMonth()-2);
-
-      filtered = filtered.filter(u => u.createdAt > twoMonthsAgo);
-    }
-
-    return filtered;
   }
 
-  approveStudent(student:any){
-    alert(student.username + " approved");
-  }
-
-  approveTeacher(teacher:any){
-    alert(teacher.username + " approved");
-  }
-
-  rejectUser(user:any){
-    alert(user.username + " rejected");
+  applyFilter(){
+    if(this.filterType==="newest"){
+      this.filteredUsers = [...this.users].reverse();
+    }
   }
 
 }
